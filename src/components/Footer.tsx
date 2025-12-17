@@ -24,22 +24,60 @@ export default function Footer() {
             Interesse an einer Zusammenarbeit?
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4 mb-16">
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
             <a
-              href="mailto:kontakt@example.de"
-              className="px-8 py-4 bg-accent-cyan text-dark-900 font-semibold rounded-full hover:scale-105 transition-transform text-lg"
+              href="mailto:laserakyuz62@icloud.com"
+              className="px-8 py-4 bg-accent-cyan text-dark-900 font-semibold rounded-full hover:scale-105 transition-transform text-lg flex items-center gap-2"
             >
-              Kontakt aufnehmen
+              <span>📧</span>
+              <span>E-Mail schreiben</span>
             </a>
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/Laser_624"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 glass glass-hover rounded-full font-semibold text-white text-lg"
+              className="px-8 py-4 glass glass-hover rounded-full font-semibold text-white text-lg flex items-center gap-2"
             >
-              Instagram
+              <span>📱</span>
+              <span>Instagram</span>
             </a>
           </div>
+
+          {/* Contact Info */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="grid md:grid-cols-3 gap-6 mb-12"
+          >
+            <a 
+              href="mailto:laserakyuz62@icloud.com"
+              className="glass rounded-xl p-6 text-center border border-white/5 hover:border-accent-cyan/30 transition-all"
+            >
+              <div className="text-3xl mb-3">📧</div>
+              <h3 className="text-white font-semibold mb-1">E-Mail</h3>
+              <p className="text-accent-cyan text-sm">laserakyuz62@icloud.com</p>
+            </a>
+            <a 
+              href="tel:+4901602191045"
+              className="glass rounded-xl p-6 text-center border border-white/5 hover:border-accent-cyan/30 transition-all"
+            >
+              <div className="text-3xl mb-3">📞</div>
+              <h3 className="text-white font-semibold mb-1">Telefon</h3>
+              <p className="text-accent-cyan text-sm">0160 219 1045</p>
+            </a>
+            <a 
+              href="https://instagram.com/Laser_624"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass rounded-xl p-6 text-center border border-white/5 hover:border-accent-cyan/30 transition-all"
+            >
+              <div className="text-3xl mb-3">📱</div>
+              <h3 className="text-white font-semibold mb-1">Instagram</h3>
+              <p className="text-accent-cyan text-sm">@Laser_624</p>
+            </a>
+          </motion.div>
 
           {/* Info */}
           <div className="text-gray-500 text-sm space-y-2">
