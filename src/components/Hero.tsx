@@ -46,6 +46,15 @@ export default function Hero() {
           Foto • Video • Social Media
         </motion.p>
 
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-lg text-gray-500 italic mb-10"
+        >
+          "Better than yesterday."
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
