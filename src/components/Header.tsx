@@ -28,22 +28,8 @@ export default function Header({
   const selectedCategory = categories.find(cat => cat.id === categoryFilter)
 
   return (
-    <header id="portfolio" className="py-8">
+    <header id="portfolio" className="py-4">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-8"
-        >
-          <span className="text-accent-cyan text-sm font-semibold tracking-wider uppercase mb-4 block">
-            Portfolio
-          </span>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">
-            Meine <span className="text-gradient">Projekte</span>
-          </h2>
-        </motion.div>
-
         <div className="flex flex-col gap-4">
           {/* Filter Row */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-center gap-4">
