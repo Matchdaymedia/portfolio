@@ -4,37 +4,37 @@ export const categories: Category[] = [
   {
     id: 'unternehmensgrafiken',
     name: 'Unternehmensgrafiken',
-    description: 'Professionelle Grafiken und Designs für Unternehmen',
+    description: 'Professionelle Grafiken, Logos und Designs für Unternehmen und Social Media',
     icon: '🎨',
-    color: 'from-blue-500 to-blue-700',
+    color: 'from-blue-500 to-cyan-500',
   },
   {
     id: 'produktfotos',
     name: 'Produktfotos',
-    description: 'Hochwertige Produktfotografie',
+    description: 'Hochwertige Produktfotografie für E-Commerce und Kataloge',
     icon: '📸',
-    color: 'from-purple-500 to-purple-700',
+    color: 'from-purple-500 to-pink-500',
   },
   {
     id: 'produktvideos',
     name: 'Produktvideos',
     description: 'Professionelle Produktvideos und Werbefilme',
     icon: '🎬',
-    color: 'from-green-500 to-green-700',
+    color: 'from-green-500 to-emerald-500',
   },
   {
     id: 'reels-tiktok',
     name: 'Reels & TikTok',
-    description: 'Kreative Short-Form Videos für Social Media',
+    description: 'Kreative Short-Form Videos für Instagram Reels und TikTok',
     icon: '📱',
-    color: 'from-pink-500 to-pink-700',
+    color: 'from-pink-500 to-rose-500',
   },
   {
     id: 'sportcontent',
     name: 'Sport Content',
-    description: 'Grafiken und Videos für Sport-Content',
+    description: 'Dynamische Grafiken und Videos für Sport-Content und Vereine',
     icon: '⚽',
-    color: 'from-orange-500 to-orange-700',
+    color: 'from-orange-500 to-amber-500',
   },
 ]
 
@@ -47,4 +47,3 @@ export const tools = [
   { id: 'cutten', name: 'Cutten', icon: '🎬' },
   { id: 'fotografie', name: 'Fotografie', icon: '📷' },
 ]
-

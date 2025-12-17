@@ -28,42 +28,43 @@ export default function Header({
   const selectedCategory = categories.find(cat => cat.id === categoryFilter)
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-40">
-      <div className="container mx-auto px-4 py-6">
+    <header id="portfolio" className="sticky top-0 z-40 glass border-b border-white/5">
+      <div className="container mx-auto px-4 py-4">
         <div className="flex flex-col gap-4">
-          {/* Top Row: Title and Main Actions */}
+          {/* Top Row */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <motion.h1
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-3xl font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent cursor-pointer"
+            <motion.h2
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-2xl font-display font-bold cursor-pointer"
               onClick={() => {
                 setCategoryFilter('all')
-                setShowCategories(false)
+                setShowCategories(true)
               }}
             >
-              Mein Portfolio
-            </motion.h1>
+              <span className="text-gradient">MATCHDAY</span>
+              <span className="text-white">MEDIA</span>
+            </motion.h2>
             
             <div className="flex gap-2 flex-wrap">
               <button
                 onClick={() => setShowCategories(!showCategories)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                className={`px-5 py-2.5 rounded-full font-medium text-sm transition-all duration-300 ${
                   showCategories
-                    ? 'bg-primary-600 text-white shadow-md'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-accent-cyan text-dark-900'
+                    : 'glass glass-hover text-white'
                 }`}
               >
-                {showCategories ? 'Galerie' : 'Kategorien'}
+                {showCategories ? '✨ Kategorien' : '📂 Kategorien'}
               </button>
               {typeFilters.map((f) => (
                 <button
                   key={f.id}
                   onClick={() => setTypeFilter(f.id)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                  className={`px-5 py-2.5 rounded-full font-medium text-sm transition-all duration-300 ${
                     typeFilter === f.id
-                      ? 'bg-primary-600 text-white shadow-md'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-white/10 text-white border border-white/20'
+                      : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {f.label}
@@ -74,33 +75,36 @@ export default function Header({
 
           {/* Category Filter Row */}
           {!showCategories && (
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-sm text-gray-600 font-medium">Kategorie:</span>
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex items-center gap-2 flex-wrap"
+            >
               <button
                 onClick={() => setCategoryFilter('all')}
-                className={`px-3 py-1 rounded-full text-sm font-medium transition-all ${
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   categoryFilter === 'all'
-                    ? 'bg-primary-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-accent-purple text-white'
+                    : 'text-gray-400 hover:text-white hover:bg-white/5'
                 }`}
               >
-                Alle
+                Alle Projekte
               </button>
               {categories.map((cat) => (
                 <button
                   key={cat.id}
                   onClick={() => setCategoryFilter(cat.id)}
-                  className={`px-3 py-1 rounded-full text-sm font-medium transition-all flex items-center gap-1 ${
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
                     categoryFilter === cat.id
-                      ? 'bg-primary-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-accent-purple text-white'
+                      : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   <span>{cat.icon}</span>
-                  <span>{cat.name}</span>
+                  <span className="hidden sm:inline">{cat.name}</span>
                 </button>
               ))}
-            </div>
+            </motion.div>
           )}
 
           {/* Active Filter Display */}
@@ -108,17 +112,17 @@ export default function Header({
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="flex items-center gap-2 text-sm text-gray-600"
+              className="flex items-center gap-3 text-sm"
             >
-              <span>Aktive Kategorie:</span>
-              <span className="font-semibold text-primary-600">
+              <span className="text-gray-500">Zeige:</span>
+              <span className="px-3 py-1 rounded-full glass text-accent-cyan font-medium">
                 {selectedCategory.icon} {selectedCategory.name}
               </span>
               <button
                 onClick={() => setCategoryFilter('all')}
-                className="text-primary-600 hover:text-primary-700 underline ml-2"
+                className="text-gray-500 hover:text-accent-pink transition-colors"
               >
-                Zurücksetzen
+                ✕ Filter zurücksetzen
               </button>
             </motion.div>
           )}
@@ -127,4 +131,3 @@ export default function Header({
     </header>
   )
 }
-
