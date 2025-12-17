@@ -383,8 +383,6 @@ export const mediaItems: MediaItem[] = [
   },
 
   // ========== SPORT CONTENT - VIDEOS ==========
-  // Die großen Videos sind im backup-large-videos Ordner gespeichert
-  // Lade sie auf YouTube hoch und füge die Links hier ein
   {
     id: 'sc-v-1',
     type: 'video',
@@ -405,5 +403,65 @@ export const mediaItems: MediaItem[] = [
     date: '2024-08-15',
     tools: ['filmen', 'cutten', 'premiere-pro'],
     client: 'Wuppertaler SV',
+  },
+  // ========== GROSSE VIDEOS (YouTube) ==========
+  // Ersetze 'YOUTUBE_ID_HIER' mit der echten YouTube Video-ID
+  // Beispiel: Bei youtube.com/watch?v=abc123 ist die ID: abc123
+  {
+    id: 'sc-v-3',
+    type: 'video',
+    title: 'Brotatos x Soccer Academy',
+    description: 'Sport-Video für Soccer Academy',
+    url: '',
+    youtubeId: 'YOUTUBE_ID_HIER', // <-- YouTube ID hier einfügen
+    category: 'sportcontent',
+    date: '2024-07-20',
+    tools: ['filmen', 'cutten', 'premiere-pro'],
+    client: 'Soccer Academy',
+  },
+  {
+    id: 'sc-v-4',
+    type: 'video',
+    title: 'Erdem Canpolat',
+    description: 'Sport-Highlight Video',
+    url: '',
+    youtubeId: 'YOUTUBE_ID_HIER', // <-- YouTube ID hier einfügen
+    category: 'sportcontent',
+    date: '2024-07-25',
+    tools: ['filmen', 'cutten', 'premiere-pro'],
+  },
+  {
+    id: 'sc-v-5',
+    type: 'video',
+    title: 'HAK 3',
+    description: 'Sport-Content Video',
+    url: '',
+    youtubeId: 'YOUTUBE_ID_HIER', // <-- YouTube ID hier einfügen
+    category: 'sportcontent',
+    date: '2024-08-01',
+    tools: ['filmen', 'cutten', 'premiere-pro'],
+  },
+  {
+    id: 'sc-v-6',
+    type: 'video',
+    title: 'Soccer Academy x Dersimspor',
+    description: 'Sport-Event Video',
+    url: '',
+    youtubeId: 'YOUTUBE_ID_HIER', // <-- YouTube ID hier einfügen
+    category: 'sportcontent',
+    date: '2024-08-10',
+    tools: ['filmen', 'cutten', 'premiere-pro'],
+    client: 'Soccer Academy',
+  },
+  {
+    id: 'sc-v-7',
+    type: 'video',
+    title: 'Sport-Content Video',
+    description: 'Dynamisches Sport-Video',
+    url: '',
+    youtubeId: 'YOUTUBE_ID_HIER', // <-- YouTube ID hier einfügen
+    category: 'sportcontent',
+    date: '2024-08-20',
+    tools: ['filmen', 'cutten', 'premiere-pro'],
   },
 ]

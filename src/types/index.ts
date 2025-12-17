@@ -25,6 +25,7 @@ export interface MediaItem {
   date?: string
   tools?: ToolType[]
   client?: string
+  youtubeId?: string // YouTube Video ID für große Videos
 }
 
 export interface Category {

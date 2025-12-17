@@ -8,8 +8,19 @@ interface MediaCardProps {
   onClick: () => void
 }
 
+// YouTube Thumbnail URL generieren
+const getYouTubeThumbnail = (youtubeId: string) => {
+  return `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`
+}
+
 export default function MediaCard({ item, index, onClick }: MediaCardProps) {
   const category = categories.find(cat => cat.id === item.category)
+  const isYouTube = item.youtubeId && item.youtubeId !== 'YOUTUBE_ID_HIER'
+  
+  // Thumbnail URL bestimmen
+  const thumbnailUrl = item.thumbnail 
+    || (isYouTube ? getYouTubeThumbnail(item.youtubeId!) : item.url)
+    || '/placeholder.jpg'
 
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -37,10 +48,14 @@ export default function MediaCard({ item, index, onClick }: MediaCardProps) {
         {/* Image container */}
         <div className="relative aspect-square overflow-hidden bg-dark-700">
           <img
-            src={item.thumbnail || item.url}
+            src={thumbnailUrl}
             alt={item.title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             loading="lazy"
+            onError={(e) => {
+              // Fallback bei Fehler
+              (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%231a1a25" width="100" height="100"/><text x="50" y="50" text-anchor="middle" dy=".3em" fill="%23666" font-size="40">🎬</text></svg>'
+            }}
           />
           
           {/* Overlay */}
@@ -62,6 +77,11 @@ export default function MediaCard({ item, index, onClick }: MediaCardProps) {
           
           {/* Type badge */}
           <div className="absolute top-3 right-3 flex gap-2">
+            {isYouTube && (
+              <span className="px-2 py-1 rounded-full text-xs font-semibold bg-red-500/80 text-white">
+                ▶️ YT
+              </span>
+            )}
             <span className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md ${
               item.type === 'photo'
                 ? 'bg-accent-cyan/20 text-accent-cyan border border-accent-cyan/30'

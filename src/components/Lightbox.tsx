@@ -42,6 +42,7 @@ export default function Lightbox({ item, onClose }: LightboxProps) {
   if (!item) return null
 
   const category = categories.find(cat => cat.id === item.category)
+  const isYouTube = item.youtubeId && item.youtubeId !== 'YOUTUBE_ID_HIER'
 
   return (
     <motion.div
@@ -81,7 +82,19 @@ export default function Lightbox({ item, onClose }: LightboxProps) {
                 alt={item.title}
                 className="max-w-full max-h-[70vh] object-contain"
               />
-            ) : (
+            ) : isYouTube ? (
+              // YouTube Embed
+              <div className="w-full aspect-video">
+                <iframe
+                  src={`https://www.youtube.com/embed/${item.youtubeId}?autoplay=1`}
+                  title={item.title}
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            ) : item.url ? (
+              // Lokales Video
               <video
                 src={item.url}
                 controls
@@ -90,6 +103,13 @@ export default function Lightbox({ item, onClose }: LightboxProps) {
               >
                 Dein Browser unterstützt das Video-Element nicht.
               </video>
+            ) : (
+              // Platzhalter wenn noch keine YouTube ID
+              <div className="text-center p-8">
+                <div className="text-6xl mb-4">🎬</div>
+                <p className="text-gray-400">Video wird bald verfügbar sein</p>
+                <p className="text-gray-500 text-sm mt-2">YouTube Upload ausstehend</p>
+              </div>
             )}
           </div>
 
@@ -120,25 +140,21 @@ export default function Lightbox({ item, onClose }: LightboxProps) {
                   <span>{category.name}</span>
                 </span>
               )}
-              {item.date && (
-                <span className="px-4 py-2 rounded-full text-sm glass text-gray-300">
-                  📅 {new Date(item.date).toLocaleDateString('de-DE', { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                  })}
-                </span>
-              )}
               {item.client && (
                 <span className="px-4 py-2 rounded-full text-sm glass text-accent-cyan">
                   👤 {item.client}
+                </span>
+              )}
+              {isYouTube && (
+                <span className="px-4 py-2 rounded-full text-sm bg-red-500/20 text-red-400 border border-red-500/30">
+                  ▶️ YouTube
                 </span>
               )}
             </div>
 
             {item.tools && item.tools.length > 0 && (
               <div className="border-t border-white/10 pt-4">
-                <h3 className="text-sm font-semibold text-gray-400 mb-3">Verwendete Tools:</h3>
+                <h3 className="text-sm font-semibold text-gray-400 mb-3">Tools:</h3>
                 <div className="flex flex-wrap gap-2">
                   {item.tools.map((tool) => {
                     const toolData = tools.find(t => t.id === tool)
