@@ -28,25 +28,26 @@ export default function Header({
   const selectedCategory = categories.find(cat => cat.id === categoryFilter)
 
   return (
-    <header id="portfolio" className="sticky top-0 z-40 glass border-b border-white/5">
-      <div className="container mx-auto px-4 py-4">
+    <header id="portfolio" className="py-8">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-8"
+        >
+          <span className="text-accent-cyan text-sm font-semibold tracking-wider uppercase mb-4 block">
+            Portfolio
+          </span>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">
+            Meine <span className="text-gradient">Projekte</span>
+          </h2>
+        </motion.div>
+
         <div className="flex flex-col gap-4">
-          {/* Top Row */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <motion.h2
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-2xl font-display font-bold cursor-pointer"
-              onClick={() => {
-                setCategoryFilter('all')
-                setShowCategories(true)
-              }}
-            >
-              <span className="text-gradient">MATCHDAY</span>
-              <span className="text-white">MEDIA</span>
-            </motion.h2>
-            
-            <div className="flex gap-2 flex-wrap">
+          {/* Filter Row */}
+          <div className="flex flex-col md:flex-row md:items-center md:justify-center gap-4">
+            <div className="flex gap-2 flex-wrap justify-center">
               <button
                 onClick={() => setShowCategories(!showCategories)}
                 className={`px-5 py-2.5 rounded-full font-medium text-sm transition-all duration-300 ${
@@ -72,61 +73,61 @@ export default function Header({
               ))}
             </div>
           </div>
+        </div>
 
-          {/* Category Filter Row */}
-          {!showCategories && (
-            <motion.div 
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex items-center gap-2 flex-wrap"
+        {/* Category Filter Row */}
+        {!showCategories && (
+          <motion.div 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex items-center gap-2 flex-wrap justify-center mt-4"
+          >
+            <button
+              onClick={() => setCategoryFilter('all')}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                categoryFilter === 'all'
+                  ? 'bg-accent-purple text-white'
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+              }`}
             >
+              Alle Projekte
+            </button>
+            {categories.map((cat) => (
               <button
-                onClick={() => setCategoryFilter('all')}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  categoryFilter === 'all'
+                key={cat.id}
+                onClick={() => setCategoryFilter(cat.id)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
+                  categoryFilter === cat.id
                     ? 'bg-accent-purple text-white'
                     : 'text-gray-400 hover:text-white hover:bg-white/5'
                 }`}
               >
-                Alle Projekte
+                <span>{cat.icon}</span>
+                <span className="hidden sm:inline">{cat.name}</span>
               </button>
-              {categories.map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => setCategoryFilter(cat.id)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
-                    categoryFilter === cat.id
-                      ? 'bg-accent-purple text-white'
-                      : 'text-gray-400 hover:text-white hover:bg-white/5'
-                  }`}
-                >
-                  <span>{cat.icon}</span>
-                  <span className="hidden sm:inline">{cat.name}</span>
-                </button>
-              ))}
-            </motion.div>
-          )}
+            ))}
+          </motion.div>
+        )}
 
-          {/* Active Filter Display */}
-          {!showCategories && categoryFilter !== 'all' && selectedCategory && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="flex items-center gap-3 text-sm"
+        {/* Active Filter Display */}
+        {!showCategories && categoryFilter !== 'all' && selectedCategory && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="flex items-center justify-center gap-3 text-sm mt-4"
+          >
+            <span className="text-gray-500">Zeige:</span>
+            <span className="px-3 py-1 rounded-full glass text-accent-cyan font-medium">
+              {selectedCategory.icon} {selectedCategory.name}
+            </span>
+            <button
+              onClick={() => setCategoryFilter('all')}
+              className="text-gray-500 hover:text-accent-pink transition-colors"
             >
-              <span className="text-gray-500">Zeige:</span>
-              <span className="px-3 py-1 rounded-full glass text-accent-cyan font-medium">
-                {selectedCategory.icon} {selectedCategory.name}
-              </span>
-              <button
-                onClick={() => setCategoryFilter('all')}
-                className="text-gray-500 hover:text-accent-pink transition-colors"
-              >
-                ✕ Filter zurücksetzen
-              </button>
-            </motion.div>
-          )}
-        </div>
+              ✕ Filter zurücksetzen
+            </button>
+          </motion.div>
+        )}
       </div>
     </header>
   )

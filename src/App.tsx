@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <div className="min-h-screen noise">
+      <Navbar />
       <Hero />
       <About />
       <Services />
