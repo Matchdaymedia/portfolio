@@ -7,6 +7,14 @@ interface CategoryOverviewProps {
   onSelectCategory: (category: CategoryType) => void
 }
 
+const categoryDescriptions: Record<CategoryType, string> = {
+  'unternehmensgrafiken': 'Klare, professionelle Visuals für Unternehmen und Marken.',
+  'produktfotos': 'Hochwertige Präsentation von Produkten – clean, modern und ästhetisch.',
+  'produktvideos': 'Hochwertige Präsentation von Produkten – clean, modern und ästhetisch.',
+  'reels-tiktok': 'Kurzvideos mit Fokus auf Reichweite, Interaktion und Plattform-Optimierung.',
+  'sportcontent': 'Dynamische Fotos und Videos mit Fokus auf Emotion, Bewegung und Storytelling.',
+}
+
 export default function CategoryOverview({ onSelectCategory }: CategoryOverviewProps) {
   const getCategoryCount = (categoryId: CategoryType) => {
     return mediaItems.filter(item => item.category === categoryId).length
@@ -34,11 +42,14 @@ export default function CategoryOverview({ onSelectCategory }: CategoryOverviewP
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-12"
       >
+        <span className="text-accent-cyan text-sm font-semibold tracking-wider uppercase mb-4 block">
+          Portfolio
+        </span>
         <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">
-          Meine <span className="text-gradient">Arbeitsbereiche</span>
+          Meine <span className="text-gradient">Projekte</span>
         </h2>
         <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-          Wähle eine Kategorie aus, um meine Projekte zu entdecken
+          Wähle eine Kategorie aus, um meine Arbeiten zu entdecken
         </p>
       </motion.div>
 
@@ -71,7 +82,7 @@ export default function CategoryOverview({ onSelectCategory }: CategoryOverviewP
                 </h3>
                 
                 <p className="text-gray-400 mb-6 leading-relaxed">
-                  {category.description}
+                  {categoryDescriptions[category.id] || category.description}
                 </p>
                 
                 <div className="flex items-center justify-between">
@@ -107,7 +118,7 @@ export default function CategoryOverview({ onSelectCategory }: CategoryOverviewP
           { label: 'Videos', value: mediaItems.filter(i => i.type === 'video').length, icon: '🎬' },
           { label: 'Kategorien', value: categories.length, icon: '🎯' },
         ].map((stat) => (
-          <div key={stat.label} className="glass rounded-xl p-6 text-center">
+          <div key={stat.label} className="glass rounded-xl p-6 text-center border border-white/5">
             <div className="text-3xl mb-2">{stat.icon}</div>
             <div className="text-3xl font-display font-bold text-white mb-1">{stat.value}</div>
             <div className="text-sm text-gray-400">{stat.label}</div>

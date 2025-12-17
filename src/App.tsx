@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Hero from './components/Hero'
+import About from './components/About'
+import Services from './components/Services'
+import WhyMe from './components/WhyMe'
 import Header from './components/Header'
 import Gallery from './components/Gallery'
 import Lightbox from './components/Lightbox'
@@ -17,6 +20,9 @@ function App() {
   return (
     <div className="min-h-screen noise">
       <Hero />
+      <About />
+      <Services />
+      <WhyMe />
       <Header 
         typeFilter={typeFilter} 
         setTypeFilter={setTypeFilter}

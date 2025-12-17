@@ -33,14 +33,14 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 text-center px-4">
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-accent-cyan border border-accent-cyan/30 rounded-full glass">
-            Creative Media Producer
+            Every day better than yesterday 🚀
           </span>
         </motion.div>
 
@@ -48,21 +48,30 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-6"
+          className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight"
         >
-          <span className="block text-white">Ich erstelle</span>
-          <span className="block text-gradient">visuelle Stories</span>
+          <span className="block text-white">Visueller Content,</span>
+          <span className="block text-gradient">der Reichweite schafft.</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10"
+          className="text-xl md:text-2xl text-gray-300 font-medium mb-4"
         >
-          Professionelle Grafiken, Produktfotos, Videos und Social Media Content.
-          <br />
-          Von der Idee bis zum fertigen Projekt.
+          Foto, Video & Social Media – alles aus einer Hand.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="text-base md:text-lg text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed"
+        >
+          Ich produziere hochwertigen Foto- und Video-Content und betreue Social-Media-Kanäle ganzheitlich.
+          <br className="hidden md:block" />
+          Von der Idee über die Aufnahme bis zur Veröffentlichung – <span className="text-accent-cyan">alles aus einer Hand.</span>
         </motion.p>
 
         <motion.div
@@ -86,17 +95,21 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        {/* Tools */}
+        {/* Trust badges */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="mt-16 flex flex-wrap justify-center gap-6 text-gray-500"
+          className="mt-16 flex flex-wrap justify-center gap-8 text-gray-500"
         >
-          {['Photoshop', 'Premiere Pro', 'CapCut', 'Canva'].map((tool, i) => (
-            <span key={tool} className="flex items-center gap-2 text-sm">
-              <span className="w-2 h-2 rounded-full bg-accent-cyan/50" />
-              {tool}
+          {[
+            { text: 'Ein Ansprechpartner', icon: '👤' },
+            { text: 'Ein Workflow', icon: '⚡' },
+            { text: 'Volle Kontrolle', icon: '🎯' },
+          ].map((item) => (
+            <span key={item.text} className="flex items-center gap-2 text-sm">
+              <span>{item.icon}</span>
+              {item.text}
             </span>
           ))}
         </motion.div>
@@ -120,4 +133,3 @@ export default function Hero() {
     </section>
   )
 }
-
